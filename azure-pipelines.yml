@@ -34,12 +34,8 @@ stages:
 
     - task: VSTest@2
       inputs:
-        testSelector: 'testAssemblies'
-        testAssemblyVer2: |
-          **\*test*.dll
-          !**\*TestAdapter.dll
-          !**\obj\**
-        searchFolder: '$(System.DefaultWorkingDirectory)'
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
 
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact'
